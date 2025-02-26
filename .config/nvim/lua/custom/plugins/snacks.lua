@@ -1,4 +1,3 @@
----@module "snacks"
 return {
   {
     'folke/snacks.nvim',
