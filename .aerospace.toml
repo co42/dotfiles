@@ -145,18 +145,3 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
-
-[[on-window-detected]]
-if.window-title-regex-substring = 'Themed'
-check-further-callbacks = true
-run = ['layout floating']
-
-[[on-window-detected]]
-if.window-title-regex-substring = 'Save the Ship'
-check-further-callbacks = true
-run = ['layout floating']
-
-[[on-window-detected]]
-if.window-title-regex-substring = 'Genuary'
-check-further-callbacks = true
-run = ['layout floating']

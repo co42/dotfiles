@@ -1,107 +1,206 @@
+---@module "snacks"
 return {
-  -- Fuzzy Finder (files, lsp, etc)
   {
-    'nvim-telescope/telescope.nvim',
-    event = 'VimEnter',
-    branch = '0.1.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      { -- If encountering errors, see telescope-fzf-native README for installation instructions
-        'nvim-telescope/telescope-fzf-native.nvim',
-
-        -- `build` is used to run some command when the plugin is installed/updated.
-        -- This is only run then, not every time Neovim starts up.
-        build = 'make',
-
-        -- `cond` is a condition used to determine whether this plugin should be
-        -- installed and loaded.
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
-      },
-      { 'nvim-telescope/telescope-ui-select.nvim' },
-
-      -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-    },
-    config = function()
-      -- Telescope is a fuzzy finder that comes with a lot of different things that
-      -- it can fuzzy find! It's more than just a "file finder", it can search
-      -- many different aspects of Neovim, your workspace, LSP, and more!
-      --
-      -- The easiest way to use Telescope, is to start by doing something like:
-      --  :Telescope help_tags
-      --
-      -- After running this command, a window will open up and you're able to
-      -- type in the prompt window. You'll see a list of `help_tags` options and
-      -- a corresponding preview of the help.
-      --
-      -- Two important keymaps to use while in Telescope are:
-      --  - Insert mode: <c-/>
-      --  - Normal mode: ?
-      --
-      -- This opens a window that shows you all of the keymaps for the current
-      -- Telescope picker. This is really useful to discover what Telescope can
-      -- do as well as how to actually do it!
-
-      -- [[ Configure Telescope ]]
-      -- See `:help telescope` and `:help telescope.setup()`
-      require('telescope').setup {
-        -- You can put your default mappings / updates / etc. in here
-        --  All the info you're looking for is in `:help telescope.setup()`
-        --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
-        extensions = {
-          ['ui-select'] = {
-            require('telescope.themes').get_dropdown(),
-          },
+    'folke/snacks.nvim',
+    tag = 'v2.20.0',
+    lazy = false,
+    priority = 1000,
+    ---@type snacks.Config
+    opts = {
+      explorer = {},
+      picker = {
+        matcher = {
+          frecency = true,
         },
-      }
-
-      -- Enable Telescope extensions if they are installed
-      pcall(require('telescope').load_extension, 'fzf')
-      pcall(require('telescope').load_extension, 'ui-select')
-
-      -- See `:help telescope.builtin`
-      local builtin = require 'telescope.builtin'
-      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-
-      -- Slightly advanced example of overriding default behavior and theme
-      vim.keymap.set('n', '<leader>/', function()
-        -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
-          previewer = false,
-        })
-      end, { desc = '[/] Fuzzily search in current buffer' })
-
-      -- It's also possible to pass additional configuration options.
-      --  See `:help telescope.builtin.live_grep()` for information about particular keys
-      vim.keymap.set('n', '<leader>s/', function()
-        builtin.live_grep {
-          grep_open_files = true,
-          prompt_title = 'Live Grep in Open Files',
-        }
-      end, { desc = '[S]earch [/] in Open Files' })
-
-      -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set('n', '<leader>sn', function()
-        builtin.find_files { cwd = vim.fn.stdpath 'config' }
-      end, { desc = '[S]earch [N]eovim files' })
-    end,
+      },
+      -- https://github.com/folke/snacks.nvim/blob/main/docs/scratch.md#%EF%B8%8F-config
+      scratch = {
+        autowrite = true, -- automatically write when the buffer is hidden
+        filekey = {
+          cwd = true, -- use current working directory
+          branch = false, -- use current branch name
+          count = false, -- use vim.v.count1
+        },
+        ft = 'markdown',
+        root = vim.fn.stdpath 'data' .. '/scratch',
+      },
+    },
+    keys = {
+      -- Files
+      {
+        '<leader>sf',
+        function()
+          Snacks.picker.smart()
+        end,
+        desc = '[s]earch [f]iles',
+      },
+      {
+        '<leader>sg',
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = '[s]earch [g]rep',
+      },
+      {
+        '<leader>sc',
+        function()
+          ---@diagnostic disable-next-line: assign-type-mismatch
+          Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
+        end,
+        desc = '[s]earch [c]onfig',
+      },
+      {
+        '<leader>te',
+        function()
+          Snacks.explorer()
+        end,
+        desc = '[t]oggle [e]xplorer',
+      },
+      -- scratch
+      {
+        '<leader>sb',
+        function()
+          Snacks.scratch.select()
+        end,
+        desc = '[s]cratch [b]uffer',
+      },
+      {
+        '<leader>ob',
+        function()
+          Snacks.scratch.open()
+        end,
+        desc = '[o]pen [b]uffer',
+      },
+      -- git
+      {
+        '<leader>gb',
+        function()
+          Snacks.picker.git_branches()
+        end,
+        desc = '[g]it [b]ranches',
+      },
+      {
+        '<leader>gl',
+        function()
+          Snacks.picker.git_log()
+        end,
+        desc = '[g]it [l]og',
+      },
+      {
+        '<leader>gL',
+        function()
+          Snacks.picker.git_log_line()
+        end,
+        desc = '[g]it [L]og line',
+      },
+      {
+        '<leader>gd',
+        function()
+          Snacks.picker.git_diff()
+        end,
+        desc = '[g]it [d]iff (Hunks)',
+      },
+      {
+        '<leader>gs',
+        function()
+          Snacks.picker.git_status()
+        end,
+        desc = '[g]it [s]tatus',
+      },
+      {
+        '<leader>gS',
+        function()
+          Snacks.picker.git_stash()
+        end,
+        desc = '[g]it [S]tash',
+      },
+      -- LSP
+      {
+        'gd',
+        function()
+          Snacks.picker.lsp_definitions()
+        end,
+        desc = '[g]oto [d]efinition',
+      },
+      {
+        'gD',
+        function()
+          Snacks.picker.lsp_declarations()
+        end,
+        desc = '[g]oto [D]eclaration',
+      },
+      {
+        'gr',
+        function()
+          Snacks.picker.lsp_references()
+        end,
+        nowait = true,
+        desc = '[g]oto [r]eferences',
+      },
+      {
+        'gI',
+        function()
+          Snacks.picker.lsp_implementations()
+        end,
+        desc = '[g]oto [I]mplementation',
+      },
+      {
+        'gy',
+        function()
+          Snacks.picker.lsp_type_definitions()
+        end,
+        desc = '[g]oto t[y]pe definition',
+      },
+      {
+        'gs',
+        function()
+          Snacks.picker.lsp_symbols()
+        end,
+        desc = '[g]oto document [s]ymbols',
+      },
+      {
+        'gS',
+        function()
+          Snacks.picker.lsp_workspace_symbols()
+        end,
+        desc = '[g]oto workspace [S]ymbols',
+      },
+      --  -- Top Pickers & Explorer
+      --  { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      --  { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
+      --  { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
+      --  -- find
+      --  { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      --  { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
+      --  { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
+      --  { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
+      --  { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
+      --  -- Grep
+      --  { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+      --  { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
+      --  { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+      --  -- search
+      --  { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
+      --  { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
+      --  { "<leader>sa", function() Snacks.picker.autocmds() end, desc = "Autocmds" },
+      --  { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+      --  { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
+      --  { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
+      --  { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+      --  { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+      --  { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
+      --  { "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
+      --  { "<leader>si", function() Snacks.picker.icons() end, desc = "Icons" },
+      --  { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps" },
+      --  { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+      --  { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },
+      --  { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
+      --  { "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages" },
+      --  { "<leader>sp", function() Snacks.picker.lazy() end, desc = "Search for Plugin Spec" },
+      --  { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
+      --  { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
+      --  { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
+      --  { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
+    },
   },
 }
