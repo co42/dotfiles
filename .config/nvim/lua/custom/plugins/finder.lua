@@ -56,6 +56,14 @@ return {
         end,
         desc = '[t]oggle [e]xplorer',
       },
+      -- registers
+      {
+        '<leader>sr',
+        function()
+          Snacks.picker.registers()
+        end,
+        desc = '[s]earch [r]egister',
+      },
       -- scratch
       {
         '<leader>sb',
