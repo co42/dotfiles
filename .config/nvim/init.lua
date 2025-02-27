@@ -41,12 +41,12 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>') -- Clear highlights on searc
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = '[Q]uickfix list' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'next [d]iagnostic' })
-vim.keymap.set('n', ']D', function()
+vim.keymap.set('n', '<C-]>', vim.diagnostic.goto_next, { desc = 'next [d]iagnostic' })
+vim.keymap.set('n', '<C-}>', function()
   vim.diagnostic.goto_next { severity = 'ERROR' }
 end, { desc = 'next error' })
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'prev [d]iagnostic' })
-vim.keymap.set('n', '[D', function()
+vim.keymap.set('n', '<C-[>', vim.diagnostic.goto_prev, { desc = 'prev [d]iagnostic' })
+vim.keymap.set('n', '<C-{>', function()
   vim.diagnostic.goto_next { severity = 'ERROR' }
 end, { desc = 'prev error' })
 

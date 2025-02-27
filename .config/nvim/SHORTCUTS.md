@@ -11,6 +11,9 @@ E     Jump to the end of the WORD
 W     Jump to the beginning of the next WORD
 GE    Jump to the end of the previous WORD
 
+C-d   Page down
+C-u   Page up
+
 ## Normal Mode
 
 .     Repeat last action
@@ -25,3 +28,8 @@ GE    Jump to the end of the previous WORD
 v     Increment selection using treesitter AST
 V     Decrement selection using treesitter AST
 U     Convert selection to uppercase
+
+## Action
+
+u     Undo
+C-r   Redo

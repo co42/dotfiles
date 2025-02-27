@@ -41,7 +41,7 @@ return {
           end
 
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+          map('<C-\\>', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -140,7 +140,7 @@ return {
                 extraArgs = { '+nightly' },
               },
               checkOnSave = {
-                command = 'clippy',
+                -- command = 'clippy',
               },
             },
           },
