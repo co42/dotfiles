@@ -10,13 +10,14 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<C-e>', ':Neotree position=float reveal<CR>', desc = 'open [e]xplorer', silent = true },
   },
   opts = {
     filesystem = {
       window = {
         mappings = {
-          ['\\'] = 'close_window',
+          ['q'] = 'close_window',
+          ['<C-e>'] = 'close_window',
         },
       },
     },

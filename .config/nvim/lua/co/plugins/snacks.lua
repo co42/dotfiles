@@ -28,12 +28,11 @@ return {
         { section = 'startup' },
       },
     },
-    explorer = {},
-    picker = {
-      matcher = {
-        frecency = true,
-      },
-    },
+    -- picker = {
+    --   matcher = {
+    --     frecency = true,
+    --   },
+    -- },
     -- https://github.com/folke/snacks.nvim/blob/main/docs/scratch.md#%EF%B8%8F-config
     scratch = {
       autowrite = true, -- automatically write when the buffer is hidden
@@ -48,152 +47,145 @@ return {
   },
   keys = {
     -- Files
-    {
-      '<leader>sf',
-      function()
-        Snacks.picker.smart()
-      end,
-      desc = '[s]earch [f]iles',
-    },
-    {
-      '<leader>sg',
-      function()
-        Snacks.picker.grep()
-      end,
-      desc = '[s]earch [g]rep',
-    },
-    {
-      '<leader>sc',
-      function()
-        ---@diagnostic disable-next-line: assign-type-mismatch
-        Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
-      end,
-      desc = '[s]earch [c]onfig',
-    },
-    {
-      '<leader>te',
-      function()
-        Snacks.explorer()
-      end,
-      desc = '[t]oggle [e]xplorer',
-    },
-    -- registers
-    {
-      '<leader>sr',
-      function()
-        Snacks.picker.registers()
-      end,
-      desc = '[s]earch [r]egister',
-    },
-    -- scratch
-    {
-      '<leader>sb',
-      function()
-        Snacks.scratch.select()
-      end,
-      desc = '[s]cratch [b]uffer',
-    },
-    {
-      '<leader>ob',
-      function()
-        Snacks.scratch.open()
-      end,
-      desc = '[o]pen [b]uffer',
-    },
-    -- git
-    {
-      '<leader>gb',
-      function()
-        Snacks.picker.git_branches()
-      end,
-      desc = '[g]it [b]ranches',
-    },
-    {
-      '<leader>gl',
-      function()
-        Snacks.picker.git_log()
-      end,
-      desc = '[g]it [l]og',
-    },
-    {
-      '<leader>gL',
-      function()
-        Snacks.picker.git_log_line()
-      end,
-      desc = '[g]it [L]og line',
-    },
-    {
-      '<leader>gd',
-      function()
-        Snacks.picker.git_diff()
-      end,
-      desc = '[g]it [d]iff (Hunks)',
-    },
-    {
-      '<leader>gs',
-      function()
-        Snacks.picker.git_status()
-      end,
-      desc = '[g]it [s]tatus',
-    },
-    {
-      '<leader>gS',
-      function()
-        Snacks.picker.git_stash()
-      end,
-      desc = '[g]it [S]tash',
-    },
-    -- LSP
-    {
-      'gd',
-      function()
-        Snacks.picker.lsp_definitions()
-      end,
-      desc = '[g]oto [d]efinition',
-    },
-    {
-      'gD',
-      function()
-        Snacks.picker.lsp_declarations()
-      end,
-      desc = '[g]oto [D]eclaration',
-    },
-    {
-      'gr',
-      function()
-        Snacks.picker.lsp_references()
-      end,
-      nowait = true,
-      desc = '[g]oto [r]eferences',
-    },
-    {
-      'gI',
-      function()
-        Snacks.picker.lsp_implementations()
-      end,
-      desc = '[g]oto [I]mplementation',
-    },
-    {
-      'gy',
-      function()
-        Snacks.picker.lsp_type_definitions()
-      end,
-      desc = '[g]oto t[y]pe definition',
-    },
-    {
-      'gs',
-      function()
-        Snacks.picker.lsp_symbols()
-      end,
-      desc = '[g]oto document [s]ymbols',
-    },
-    {
-      'gS',
-      function()
-        Snacks.picker.lsp_workspace_symbols()
-      end,
-      desc = '[g]oto workspace [S]ymbols',
-    },
+    -- {
+    --   '<leader>sf',
+    --   function()
+    --     Snacks.picker.smart()
+    --   end,
+    --   desc = '[s]earch [f]iles',
+    -- },
+    -- {
+    --   '<leader>sg',
+    --   function()
+    --     Snacks.picker.grep()
+    --   end,
+    --   desc = '[s]earch [g]rep',
+    -- },
+    -- {
+    --   '<leader>sc',
+    --   function()
+    --     ---@diagnostic disable-next-line: assign-type-mismatch
+    --     Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
+    --   end,
+    --   desc = '[s]earch [c]onfig',
+    -- },
+    -- -- registers
+    -- {
+    --   '<leader>sr',
+    --   function()
+    --     Snacks.picker.registers()
+    --   end,
+    --   desc = '[s]earch [r]egister',
+    -- },
+    -- -- scratch
+    -- {
+    --   '<leader>sb',
+    --   function()
+    --     Snacks.scratch.select()
+    --   end,
+    --   desc = '[s]cratch [b]uffer',
+    -- },
+    -- {
+    --   '<leader>ob',
+    --   function()
+    --     Snacks.scratch.open()
+    --   end,
+    --   desc = '[o]pen [b]uffer',
+    -- },
+    -- -- git
+    -- {
+    --   '<leader>gb',
+    --   function()
+    --     Snacks.picker.git_branches()
+    --   end,
+    --   desc = '[g]it [b]ranches',
+    -- },
+    -- {
+    --   '<leader>gl',
+    --   function()
+    --     Snacks.picker.git_log()
+    --   end,
+    --   desc = '[g]it [l]og',
+    -- },
+    -- {
+    --   '<leader>gL',
+    --   function()
+    --     Snacks.picker.git_log_line()
+    --   end,
+    --   desc = '[g]it [L]og line',
+    -- },
+    -- {
+    --   '<leader>gd',
+    --   function()
+    --     Snacks.picker.git_diff()
+    --   end,
+    --   desc = '[g]it [d]iff (Hunks)',
+    -- },
+    -- {
+    --   '<leader>gs',
+    --   function()
+    --     Snacks.picker.git_status()
+    --   end,
+    --   desc = '[g]it [s]tatus',
+    -- },
+    -- {
+    --   '<leader>gS',
+    --   function()
+    --     Snacks.picker.git_stash()
+    --   end,
+    --   desc = '[g]it [S]tash',
+    -- },
+    -- -- LSP
+    -- {
+    --   'gd',
+    --   function()
+    --     Snacks.picker.lsp_definitions()
+    --   end,
+    --   desc = '[g]oto [d]efinition',
+    -- },
+    -- {
+    --   'gD',
+    --   function()
+    --     Snacks.picker.lsp_declarations()
+    --   end,
+    --   desc = '[g]oto [D]eclaration',
+    -- },
+    -- {
+    --   'gr',
+    --   function()
+    --     Snacks.picker.lsp_references()
+    --   end,
+    --   nowait = true,
+    --   desc = '[g]oto [r]eferences',
+    -- },
+    -- {
+    --   'gI',
+    --   function()
+    --     Snacks.picker.lsp_implementations()
+    --   end,
+    --   desc = '[g]oto [I]mplementation',
+    -- },
+    -- {
+    --   'gy',
+    --   function()
+    --     Snacks.picker.lsp_type_definitions()
+    --   end,
+    --   desc = '[g]oto t[y]pe definition',
+    -- },
+    -- {
+    --   'gs',
+    --   function()
+    --     Snacks.picker.lsp_symbols()
+    --   end,
+    --   desc = '[g]oto document [s]ymbols',
+    -- },
+    -- {
+    --   'gS',
+    --   function()
+    --     Snacks.picker.lsp_workspace_symbols()
+    --   end,
+    --   desc = '[g]oto workspace [S]ymbols',
+    -- },
     --  -- Top Pickers & Explorer
     --  { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
     --  { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },

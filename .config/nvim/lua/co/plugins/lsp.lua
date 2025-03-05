@@ -108,6 +108,14 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
+      local builtin = require 'telescope.builtin'
+      vim.keymap.set('n', 'gs', builtin.lsp_document_symbols, { desc = '[g]oto document [s]ymbol' })
+      vim.keymap.set('n', 'gS', builtin.lsp_workspace_symbols, { desc = '[g]oto workspace [S]ymbol' })
+      vim.keymap.set('n', 'gd', builtin.lsp_definitions, { desc = '[g]oto [d]efinition' })
+      vim.keymap.set('n', 'gD', builtin.lsp_implementations, { desc = '[g]oto implementation' })
+      vim.keymap.set('n', 'gy', builtin.lsp_type_definitions, { desc = '[g]oto t[y]pe definition' })
+      vim.keymap.set('n', 'gr', builtin.lsp_references, { desc = '[g]oto [r]eference' })
+
       local servers = {
         helm_ls = {
           settings = {

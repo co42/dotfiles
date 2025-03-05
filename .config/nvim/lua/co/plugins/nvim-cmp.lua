@@ -43,7 +43,7 @@ return {
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
 
-    cmp.setup {
+    local options = {
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
@@ -99,5 +99,11 @@ return {
         { name = 'nvim_lsp_signature_help' },
       },
     }
+
+    -- Configure nvchad theme
+    options = vim.tbl_deep_extend('force', options, require 'nvchad.cmp')
+    require('cmp').setup(options)
+
+    cmp.setup(options)
   end,
 }
