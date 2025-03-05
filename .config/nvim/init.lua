@@ -17,7 +17,6 @@ vim.opt.list = true -- Sets how neovim will display certain whitespace character
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.ignorecase = true -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.inccommand = 'split' -- Preview substitutions live, as you type!
--- vim.opt.mouse = 'a' -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.number = true -- Show line numbers
 vim.opt.relativenumber = true -- Line number relative to cursor
 vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor
@@ -100,14 +99,14 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 -- Config nvchad after lazy setup
-dofile(vim.g.base46_cache .. 'defaults')
-dofile(vim.g.base46_cache .. 'statusline')
+-- dofile(vim.g.base46_cache .. 'defaults')
+-- dofile(vim.g.base46_cache .. 'statusline')
+for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
+  dofile(vim.g.base46_cache .. v)
+end
 
 -- [[ Configure and install plugins ]]
-require('lazy').setup({
+require('lazy').setup {
+  -- See https://github.com/bwpge/lazy-events.nvim
   { import = 'co.plugins' },
-}, {
-  ui = {
-    icons = {},
-  },
-})
+}

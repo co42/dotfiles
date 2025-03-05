@@ -1,4 +1,5 @@
 return {
+  -- https://github.com/NvChad/ui
   {
     'nvchad/ui',
     dependencies = {
@@ -10,9 +11,10 @@ return {
     end,
   },
 
+  -- https://github.com/NvChad/base46
   {
     'nvchad/base46',
-    lazy = true,
+    lazy = false,
     build = function()
       require('base46').load_all_highlights()
     end,

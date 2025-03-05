@@ -1,17 +1,16 @@
+-- Show you pending keybinds
+-- https://github.com/folke/which-key.nvim
 return {
-  -- Show you pending keybinds
   {
     'folke/which-key.nvim',
-    event = 'VimEnter',
+    event = 'VeryLazy',
     opts = {
-      -- delay between pressing a key and opening which-key (milliseconds)
-      -- this setting is independent of vim.opt.timeoutlen
-      delay = 50,
+      -- Delay between pressing a key and opening which-key (milliseconds)
+      delay = 250,
       icons = {
-        -- set icon mappings to true if you have a Nerd Font
+        -- Set icon mappings to true if you have a Nerd Font
         mappings = vim.g.have_nerd_font,
-        -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
-        -- default which-key.nvim defined Nerd Font icons, otherwise define a string table
+        -- If you are using a Nerd Font: set icons.keys to an empty table
         keys = {},
       },
 
