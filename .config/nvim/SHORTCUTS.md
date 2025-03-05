@@ -33,3 +33,8 @@ U     Convert selection to uppercase
 
 u     Undo
 C-r   Redo
+
+## [d]iagnostics
+
+<leader>dt     [d]iagnostic [t]oggle (document)
+<leader>dT     [d]iagnostic [T]oggle (workspace)

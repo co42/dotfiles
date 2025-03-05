@@ -6,11 +6,11 @@ size = 14
 history = 100000
 
 [window]
-decorations = "Buttonless"
-opacity = 0.90
 blur = true
+decorations = "buttonless"
+# opacity = 0.90
+option_as_alt = "both"
 padding = { x = 5, y = 7 }
-option_as_alt = "Both"
 
 [general]
 import = [
