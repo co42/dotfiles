@@ -1,6 +1,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true -- Set to true if you have a Nerd Font installed and selected in the terminal
+
+-- Config nvchad before lazy setup
+vim.g.base46_cache = vim.fn.stdpath 'data' .. '/base46_cache/'
+
 -- Disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -94,6 +98,10 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
+
+-- Config nvchad after lazy setup
+dofile(vim.g.base46_cache .. 'defaults')
+dofile(vim.g.base46_cache .. 'statusline')
 
 -- [[ Configure and install plugins ]]
 require('lazy').setup({
