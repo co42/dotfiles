@@ -1,0 +1,63 @@
+[
+  // Navigation
+  {
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "bindings": {
+      "ctrl-k": "menu::SelectPrevious",
+      "ctrl-j": "menu::SelectNext"
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-k": "editor::ContextMenuPrevious",
+      "ctrl-j": "editor::ContextMenuNext"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space s f": "file_finder::Toggle",
+      "space s t": "theme_selector::Toggle",
+      "space s d": "diagnostics::Deploy",
+      "space s e": "project_panel::ToggleFocus",
+      "space s s": "outline_panel::ToggleFocus",
+      "space s g": "git_panel::ToggleFocus",
+      "space s a": "assistant::ToggleFocus"
+    }
+  },
+  // {
+  //   "context": "Editor",
+  //   "bindings": {
+  //     "shift-tab": "pane::ActivatePreviousItem",
+  //     "tab": "pane::ActivateNextItem"
+  //   }
+  // },
+  {
+    "context": "vim_mode == insert && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-k": "editor::ContextMenuPrevious",
+      "ctrl-j": "editor::ContextMenuNext"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-l": "terminal::Clear"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "v": "editor::SelectLargerSyntaxNode",
+      "V": "editor::SelectSmallerSyntaxNode"
+    }
+  }
+]
