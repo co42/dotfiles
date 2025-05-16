@@ -8,6 +8,14 @@
 // from the command palette or from `Zed` application menu.
 
 {
+  "edit_predictions": {
+    "mode": "subtle",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null
+    },
+    "enabled_in_assistant": false
+  },
   "features": {
     "edit_prediction_provider": "zed"
   },
@@ -37,19 +45,19 @@
   },
   "ui_font_size": null,
   "buffer_font_family": "FiraCode Nerd Font Mono",
+  "terminal": {
+    "font_family": "FiraCode Nerd Font Mono",
+    "line_height": "standard",
+    "font_size": 15.0
+  },
   // "buffer_font_family": "Fira Code Retina",
   "buffer_font_size": 15.0,
   "autosave": "on_focus_change",
   "vertical_scroll_margin": 8,
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Macchiato - No Italics",
-    "dark": "Catppuccin Mocha"
-  },
-  "terminal": {
-    "shell": {
-      "program": "nu"
-    }
+    "light": "Catppuccin Mocha - No Italics",
+    "dark": "Catppuccin Mocha - No Italics"
   },
   "lsp": {
     "rust-analyzer": {
