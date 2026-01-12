@@ -22,19 +22,42 @@
     }
   },
   {
-    "context": "Editor && vim_mode == normal",
+    "context": "GitPanel || ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
     "bindings": {
-      "space s f": "file_finder::Toggle",
-      "space s t": "theme_selector::Toggle",
-      "space s d": "diagnostics::Deploy",
-      "space s e": "project_panel::ToggleFocus",
-      "space s s": "outline_panel::ToggleFocus",
-      "space s g": "git_panel::ToggleFocus",
-      "space s a": "assistant::ToggleFocus"
+      "g f": "file_finder::Toggle"
+      // "space s g": "pane::DeploySearch",
+      // "space s t": "theme_selector::Toggle",
+      // "space s d": "diagnostics::Deploy",
+      // "space s e": "project_panel::ToggleFocus",
+      // "space s s": "outline_panel::ToggleFocus",
+      // "space g g": "git_panel::ToggleFocus",
+      // "space s a": "agent::ToggleFocus"
+    }
+  },
+  {
+    "context": "GitPanel > Editor",
+    "bindings": {
+      // "space": null,
+      "ctrl-k": "git_panel::FocusChanges",
+      "ctrl-j": "git_panel::FocusChanges"
+    }
+  },
+  {
+    "context": "GitPanel && ChangesList",
+    "use_key_equivalents": true,
+    "bindings": {
+      "ctrl-k": "git_panel::FocusEditor",
+      "ctrl-j": "git_panel::FocusEditor"
+    }
+  },
+  {
+    "context": "vim_operator == c",
+    "bindings": {
+      "a": "editor::ToggleCodeActions"
     }
   },
   // {
-  //   "context": "Editor",
+  //   "context": "vim_mode == normal && Editor",
   //   "bindings": {
   //     "shift-tab": "pane::ActivatePreviousItem",
   //     "tab": "pane::ActivateNextItem"

@@ -8,6 +8,30 @@
 // from the command palette or from `Zed` application menu.
 
 {
+  "agent_servers": {
+    "claude": {
+      "default_model": "opus"
+    }
+  },
+  "context_servers": {
+    
+  },
+  "git": {
+    "branch_picker": {
+      "show_author_name": true
+    },
+    "blame": {
+      "show_avatar": false
+    }
+  },
+  "edit_predictions": {
+    "mode": "subtle",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null
+    },
+    "enabled_in_text_threads": false
+  },
   "features": {
     "edit_prediction_provider": "zed"
   },
@@ -22,14 +46,23 @@
           "paths": ["~/co/containerd"]
         }
       ]
+    },
+    {
+      "host": "51.44.218.164",
+      "username": "ubuntu",
+      "projects": [
+        {
+          "paths": ["/home/ubuntu/containerd"]
+        }
+      ]
     }
   ],
-  "assistant": {
+  "agent": {
+    "always_allow_tool_actions": true,
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4o"
-    },
-    "version": "2"
+      "model": "gpt-5-mini"
+    }
   },
   "vim_mode": true,
   "vim": {
@@ -37,29 +70,31 @@
   },
   "ui_font_size": null,
   "buffer_font_family": "FiraCode Nerd Font Mono",
+  "terminal": {
+    "font_family": "FiraCode Nerd Font Mono",
+    "line_height": "standard",
+    "font_size": 15.0,
+    "blinking": "on"
+  },
   // "buffer_font_family": "Fira Code Retina",
   "buffer_font_size": 15.0,
-  "autosave": "on_focus_change",
+  // "autosave": "on_focus_change",
   "vertical_scroll_margin": 8,
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Macchiato - No Italics",
-    "dark": "Catppuccin Mocha"
-  },
-  "terminal": {
-    "shell": {
-      "program": "nu"
-    }
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Macchiato"
   },
   "lsp": {
     "rust-analyzer": {
       "initialization_options": {
         "rustfmt": {
           "extraArgs": ["+nightly"]
+        },
+        "checkOnSave": true,
+        "check": {
+          "command": "clippy"
         }
-        // "checkOnSave": {
-        //   "command": "clippy"
-        // }
       }
     },
     "yaml-language-server": {
