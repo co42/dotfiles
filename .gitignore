@@ -1,0 +1,33 @@
+# Ignore everything by default
+*
+
+# Allow .gitignore itself
+!.gitignore
+
+# Allow specific dotfiles
+!.aerospace.toml
+
+# Allow .config and specific subdirs
+!.config/
+!.config/alacritty/
+!.config/alacritty/**
+!.config/fish/
+!.config/fish/**
+!.config/zed/
+!.config/zed/**
+!.config/k9s/
+!.config/k9s/**
+!.config/starship.toml
+!.config/ghostty/
+!.config/ghostty/**
+
+# Ignore generated/cache files
+.config/zed/.tmp*
+.config/zed/debug.json
+.config/zed/embeddings/
+.config/zed/prompts/
+.config/zed/*_backup.json
+.config/k9s/cache/
+.config/k9s/clusters/
+.config/k9s/screen-dumps/
+.config/k9s/benchmarks/
