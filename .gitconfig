@@ -1,0 +1,36 @@
+[user]
+    name = Corentin REGAL
+    email = corentin@huggingface.co
+
+; [include]
+    ; path = ~/.delta/themes/catppuccin.gitconfig
+
+[core]
+    ; pager = delta
+    excludesFile = ~/.gitignore
+
+[interactive]
+    ; diffFilter = delta --color-only
+
+[delta]
+    ; navigate = true    # use n and N to move between diff sections
+    ; features = catppuccin-macchiato
+
+    # delta detects terminal colors automatically; set one of these to disable auto-detection
+    # dark = true
+    # light = true
+
+[merge]
+    conflictstyle = diff3
+
+; [diff]
+;     colorMoved = default
+[pull]
+	rebase = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[push]
+	autoSetupRemote = true

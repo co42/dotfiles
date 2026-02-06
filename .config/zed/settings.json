@@ -8,65 +8,93 @@
 // from the command palette or from `Zed` application menu.
 
 {
+  "git_panel": {
+    "tree_view": true,
+  },
   "agent_servers": {
     "claude": {
-      "default_model": "opus"
-    }
+      "default_model": "opus",
+    },
   },
   "context_servers": {
-    
+    "grafana": {
+      "command": "mcp-grafana",
+      "args": ["-t", "stdio"],
+      "env": {
+        "GRAFANA_URL": "https://grafana.huggingface.tech",
+      },
+    },
+    "slack": {
+      "enabled": false,
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_TEAM_ID": "T1RCG4490",
+      },
+    },
+    "elasticsearch": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://huggingface-c77f3b.kb.us-east-1.aws.elastic.cloud/api/agent_builder/mcp",
+        "--header",
+        "Authorization:ApiKey <set ELASTIC_API_KEY>",
+      ],
+    },
   },
   "git": {
     "branch_picker": {
-      "show_author_name": true
+      "show_author_name": true,
     },
     "blame": {
-      "show_avatar": false
-    }
+      "show_avatar": false,
+    },
   },
   "edit_predictions": {
     "mode": "subtle",
     "copilot": {
       "proxy": null,
-      "proxy_no_verify": null
+      "proxy_no_verify": null,
     },
-    "enabled_in_text_threads": false
+    "enabled_in_text_threads": false,
   },
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "zed",
   },
   "ssh_connections": [
     {
       "host": "azr-r6id.8xlarge",
       "projects": [
         {
-          "paths": ["~/co"]
+          "paths": ["~/co"],
         },
         {
-          "paths": ["~/co/containerd"]
-        }
-      ]
+          "paths": ["~/co/containerd"],
+        },
+      ],
     },
     {
       "host": "51.44.218.164",
       "username": "ubuntu",
       "projects": [
         {
-          "paths": ["/home/ubuntu/containerd"]
-        }
-      ]
-    }
+          "paths": ["/home/ubuntu/containerd"],
+        },
+      ],
+    },
   ],
   "agent": {
+    "default_width": 1200.0,
+    "show_turn_stats": true,
     "always_allow_tool_actions": true,
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-5-mini"
-    }
+      "model": "gpt-5-mini",
+    },
   },
   "vim_mode": true,
   "vim": {
-    "toggle_relative_line_numbers": true
+    "toggle_relative_line_numbers": true,
   },
   "ui_font_size": null,
   "buffer_font_family": "FiraCode Nerd Font Mono",
@@ -74,7 +102,7 @@
     "font_family": "FiraCode Nerd Font Mono",
     "line_height": "standard",
     "font_size": 15.0,
-    "blinking": "on"
+    "blinking": "on",
   },
   // "buffer_font_family": "Fira Code Retina",
   "buffer_font_size": 15.0,
@@ -83,28 +111,28 @@
   "theme": {
     "mode": "system",
     "light": "Catppuccin Latte",
-    "dark": "Catppuccin Macchiato"
+    "dark": "Catppuccin Mocha",
   },
   "lsp": {
     "rust-analyzer": {
       "initialization_options": {
         "rustfmt": {
-          "extraArgs": ["+nightly"]
+          "extraArgs": ["+nightly"],
         },
         "checkOnSave": true,
         "check": {
-          "command": "clippy"
-        }
-      }
+          "command": "clippy",
+        },
+      },
     },
     "yaml-language-server": {
       "yaml.schemas": {
-        "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.9-standalone-strict/all.json": "/*.yaml"
-      }
+        "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.9-standalone-strict/all.json": "/*.yaml",
+      },
     },
     "helm-ls": {
-      "yamlls": "yaml-language-server"
-    }
+      "yamlls": "yaml-language-server",
+    },
   },
   "file_types": {
     "Helm": [
@@ -112,8 +140,11 @@
       "**/templates/**/*.yaml",
       "**/templates/**/*.yml",
       "**/helmfile.d/**/*.yaml",
-      "**/helmfile.d/**/*.yml"
-    ]
+      "**/helmfile.d/**/*.yml",
+    ],
   },
-  "auto_update": true
+  "project_panel": {
+    "default_width": 300,
+  },
+  "auto_update": true,
 }
