@@ -18,7 +18,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+accordion-padding = 0
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -147,7 +147,7 @@ if.window-title-regex-substring = 'Space'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.window-title-regex-substring = 'Unit One'
+if.window-title-regex-substring = 'Unit One|Drift'
 run = 'layout floating'
 
 # Assign workspace 0 to laptop display
@@ -159,3 +159,10 @@ run = 'layout floating'
 if.app-name-regex-substring = "grid|Grid"
 run = "move-node-to-workspace 0"
 
+[[on-window-detected]]
+if.app-name-regex-substring = "1Password"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-name-regex-substring = "Finder"
+run = "layout floating"

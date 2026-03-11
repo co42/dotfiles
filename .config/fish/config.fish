@@ -1,7 +1,6 @@
 set fish_greeting
 set fish_history_max 0
 
-fish_add_path /Users/co/.claude/skills/wk/scripts
 fish_add_path /opt/homebrew/bin
 fish_add_path /Users/co/.local/bin
 fish_add_path /Users/co/.cargo/bin
@@ -24,8 +23,12 @@ set -x RUSTC_WRAPPER sccache
 
 alias ls='eza -l'
 alias v=nvim
+alias vim=nvim
 alias dotfiles='git "--git-dir=$HOME/.dotfiles/" "--work-tree=$HOME"'
 alias zed=/Applications/Zed.app/Contents/MacOS/cli
+alias z='zellij'
+alias wt='git worktree'
+alias ferro='echo start | claude --agent ferro'
 
 alias k=kubectl
 alias ks=kubens

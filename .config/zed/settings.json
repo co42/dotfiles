@@ -18,6 +18,7 @@
   },
   "context_servers": {
     "grafana": {
+      "enabled": false,
       "command": "mcp-grafana",
       "args": ["-t", "stdio"],
       "env": {
@@ -51,15 +52,13 @@
     },
   },
   "edit_predictions": {
+    "provider": "zed",
     "mode": "subtle",
     "copilot": {
       "proxy": null,
       "proxy_no_verify": null,
     },
     "enabled_in_text_threads": false,
-  },
-  "features": {
-    "edit_prediction_provider": "zed",
   },
   "ssh_connections": [
     {
@@ -84,12 +83,14 @@
     },
   ],
   "agent": {
+    "tool_permissions": {
+      "default": "allow"
+    },
     "default_width": 1200.0,
     "show_turn_stats": true,
-    "always_allow_tool_actions": true,
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-5-mini",
+      "model": "claude-opus-4.6",
     },
   },
   "vim_mode": true,

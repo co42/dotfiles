@@ -1,21 +1,15 @@
 return {
   {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin",
-    },
-  },
-
-  {
     "catppuccin/nvim",
     name = "catppuccin",
+    lazy = false,
+    priority = 1000,
     opts = {
-      flavour = "auto",
       background = {
         light = "latte",
         dark = "mocha",
       },
-      transparent_background = true,
+      transparent_background = false,
       integrations = {
         cmp = true,
         gitsigns = true,
@@ -29,5 +23,19 @@ return {
         which_key = true,
       },
     },
+  },
+
+  {
+    "cormacrelf/dark-notify",
+    lazy = false,
+    priority = 900,
+    config = function()
+      require("dark_notify").run({
+        schemes = {
+          light = { colorscheme = "catppuccin-latte" },
+          dark = { colorscheme = "catppuccin-mocha" },
+        },
+      })
+    end,
   },
 }

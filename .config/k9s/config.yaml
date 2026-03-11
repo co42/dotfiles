@@ -1,4 +1,5 @@
 k9s:
   ui:
-    # skin: catppuccin-mocha-transparent
-    skin: catppuccin-mocha-transparent
+    # skin: catppuccin-latte-transparent
+    skin: catppuccin-latte-transparent
+    noHeader: true
