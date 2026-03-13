@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.co.ferro</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/co/.local/bin/ferro</string>
+    </array>
+
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/co/.local/state/fnm_multishells/3375_1773131286102/bin:/Users/co/.claude/skills/wk/scripts:/Users/co/.nvm:/Users/co/hf/_work/commands:/Users/co/hf/_work/tasks/commands:/Users/co/.juliaup/bin:/Users/co/go/bin:/Users/co/.local/bin:/Users/co/.cargo/bin:/opt/homebrew/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/co/.local/state/fnm_multishells/2429_1773131177472/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pmk/env/global/bin:/Library/Apple/usr/bin</string>
+        <key>HOME</key>
+        <string>/Users/co</string>
+        <key>USER</key>
+        <string>co</string>
+        <key>SHELL</key>
+        <string>/bin/sh</string>
+        <key>TMPDIR</key>
+        <string>/var/folders/_6/mfm7qdtn1qs8kf3vwj3c5nt40000gn/T/</string>
+    </dict>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/co/.ferro/logs/stderr.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/co</string>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>ThrottleInterval</key>
+    <integer>5</integer>
+</dict>
+</plist>

@@ -6,7 +6,7 @@ return {
     priority = 1000,
     opts = {
       background = {
-        light = "latte",
+        light = "mocha",
         dark = "mocha",
       },
       transparent_background = false,
@@ -25,17 +25,18 @@ return {
     },
   },
 
-  {
-    "cormacrelf/dark-notify",
-    lazy = false,
-    priority = 900,
-    config = function()
-      require("dark_notify").run({
-        schemes = {
-          light = { colorscheme = "catppuccin-latte" },
-          dark = { colorscheme = "catppuccin-mocha" },
-        },
-      })
-    end,
-  },
+  -- dark-notify disabled — using mocha everywhere
+  -- {
+  --   "cormacrelf/dark-notify",
+  --   lazy = false,
+  --   priority = 900,
+  --   config = function()
+  --     require("dark_notify").run({
+  --       schemes = {
+  --         light = { colorscheme = "catppuccin-latte" },
+  --         dark = { colorscheme = "catppuccin-mocha" },
+  --       },
+  --     })
+  --   end,
+  -- },
 }

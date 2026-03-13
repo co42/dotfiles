@@ -111,7 +111,7 @@
   "vertical_scroll_margin": 8,
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Latte",
+    "light": "Catppuccin Mocha",
     "dark": "Catppuccin Mocha",
   },
   "lsp": {
